@@ -49,21 +49,78 @@ Windsurf reads this file from the root directory to enforce project-specific ins
 
 ## 🛠️ How to Include This in Your Projects
 
-You have two options:
+You have two practical ways to integrate these rules into your Laravel projects, depending on your workflow.
 
-### Option 1: Direct Copy (Recommended)
-Simply copy the file that matches your AI tool into the root of your new project:
-- For Cursor: Copy `.cursor/rules/filament.mdc` into your project's `.cursor/rules/` directory.
-- For Google Antigravity: Copy `.agent/rules/filament.md` into your project's `.agent/rules/` directory.
-- For Copilot: Copy `.github/copilot-instructions.md` into your project's `.github/` folder.
-- For Windsurf: Copy `.windsurfrules` to your project root.
+### Option 1: The Quick Start (Direct Download)
+Best for quick or standalone projects where you just want to set up the AI environment fast without linking to this repository permanently.
 
-### Option 2: Use as a Git Submodule
-If you want to maintain a single source of truth and update all your projects when you update the rules here:
+Run the command that matches your preferred IDE from your project's root directory:
+
+**For Cursor IDE:**
+```bash
+mkdir -p .cursor/rules
+curl -o .cursor/rules/filament.mdc https://raw.githubusercontent.com/jlildev/filament-ai-rules/main/.cursor/rules/filament.mdc
+```
+
+**For GitHub Copilot:**
+```bash
+mkdir -p .github
+curl -o .github/copilot-instructions.md https://raw.githubusercontent.com/jlildev/filament-ai-rules/main/.github/copilot-instructions.md
+```
+
+**For Google Antigravity:**
+```bash
+mkdir -p .agent/rules
+curl -o .agent/rules/filament.md https://raw.githubusercontent.com/jlildev/filament-ai-rules/main/.agent/rules/filament.md
+```
+
+**For Windsurf:**
+```bash
+curl -o .windsurfrules https://raw.githubusercontent.com/jlildev/filament-ai-rules/main/.windsurfrules
+```
+
+---
+
+### Option 2: The Pro Setup (Git Submodules & Symlinks)
+Best for SaaS apps and long-term projects. By using a Git Submodule, you maintain a single source of truth. If you update the rules in this main repository, you can easily pull the updates across all your projects.
+
+**Step 1: Add this repository as a submodule**
+Run this in your Laravel project's root directory:
 ```bash
 git submodule add https://github.com/jlildev/filament-ai-rules.git ai-rules
 ```
-Then, you can create symlinks in your project to point to the files inside this folder.
+
+**Step 2: Create Symlinks**
+Link the rule files from the submodule to the locations your IDE expects. Run the commands for the IDEs you use:
+
+*For Cursor:*
+```bash
+mkdir -p .cursor/rules
+ln -s ../../ai-rules/.cursor/rules/filament.mdc .cursor/rules/filament.mdc
+```
+
+*For GitHub Copilot:*
+```bash
+mkdir -p .github
+ln -s ../ai-rules/.github/copilot-instructions.md .github/copilot-instructions.md
+```
+
+*For Google Antigravity:*
+```bash
+mkdir -p .agent/rules
+ln -s ../../ai-rules/.agent/rules/filament.md .agent/rules/filament.md
+```
+
+*For Windsurf:*
+```bash
+ln -s ai-rules/.windsurfrules .windsurfrules
+```
+
+**Step 3: How to update in the future**
+Whenever the rules are updated in the main repository, simply run this inside your project to fetch the latest guidelines:
+```bash
+git submodule update --remote
+```
 
 ---
 
