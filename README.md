@@ -2,6 +2,8 @@
 
 This repository contains strict AI coding guidelines for **FilamentPHP v4** to ensure AI coding assistants generate modern, optimized, and architecturally correct code instead of relying on legacy v2 or v3 syntax.
 
+> **⚠️ Note:** This is an initial list of rules and guidelines. It will be continuously updated and expanded based on real-world issues, edge cases, and new challenges encountered during daily development.
+
 ## 🚀 Supported AI Tools & How They Work
 
 AI coding assistants (like Cursor, GitHub Copilot, Google Antigravity, and Windsurf) use specific hidden files to understand the "Context" or "Rules" of your project before generating code. 
@@ -44,7 +46,7 @@ If you want to maintain a single source of truth and update all your projects wh
 ```bash
 git submodule add https://github.com/jlildev/filament-ai-rules.git ai-rules
 ```
-Then, you can create symlinks (اختصارات) in your project to point to the files inside this folder.
+Then, you can create symlinks in your project to point to the files inside this folder.
 
 ---
 
