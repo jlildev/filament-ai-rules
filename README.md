@@ -4,13 +4,30 @@ This repository contains strict AI coding guidelines for **FilamentPHP v4** to e
 
 > **⚠️ Note:** This is an initial list of rules and guidelines. It will be continuously updated and expanded based on real-world issues, edge cases, and new challenges encountered during daily development.
 
+## 🏗️ How to Update Rules (Single Source of Truth)
+
+To follow the **DRY (Don't Repeat Yourself)** principle, you do **NOT** need to edit the rule files for each IDE manually. 
+
+This repository uses a PHP build script and GitHub Actions to automate everything.
+
+### Editing Process:
+1. Open the **`rules.md`** file in the root directory.
+2. Add, modify, or remove any Filament rules in this file.
+3. Commit and push your changes to the `main` branch.
+
+**That's it!** 🪄 A GitHub Action will automatically run the `build.php` script, generate the specific formats for Cursor, Copilot, Windsurf, and Antigravity, and push the updated files back to the repository.
+
+*(If you are testing locally, you can just run `php build.php` in your terminal to generate the files).*
+
+---
+
 ## 🚀 Supported AI Tools & How They Work
 
 AI coding assistants (like Cursor, GitHub Copilot, Google Antigravity, and Windsurf) use specific hidden files to understand the "Context" or "Rules" of your project before generating code. 
 
 By placing the appropriate file in the root directory of your Laravel/Filament project, the AI will automatically read it and apply the rules on every prompt.
 
-This repository provides ready-made files for the most popular tools:
+This repository automatically generates ready-made files for the most popular tools:
 
 ### 1. Cursor IDE
 **File:** `.cursorrules` (Legacy) or `.cursor/rules/*.mdc` (Modern)
